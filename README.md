@@ -1,6 +1,7 @@
 # godot-fake-planet-demo
 a small demo which uses shaders to fake a spherical game world in Godot
-all files are inside the planettest folder.
+
+all source files are inside the [src](src) folder.
 
 ## how does it work?
 

@@ -1,6 +1,9 @@
 # godot-fake-planet-demo
 a small demo which uses shaders to fake a spherical game world in Godot
 
+[online version](https://moth.monster/randomfiles/smallworld/)  
+(wasd to move, tab to toggle the effect)
+
 all source files are inside the [src](src) folder.
 
 ## how does it work?

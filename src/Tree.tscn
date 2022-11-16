@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tree.glb" type="PackedScene" id=1]
+[ext_resource path="res://SmallWorld.gdshader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 0, 1, 0, 1 )
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 0, 0, 0 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 0, 0, 0 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/scroll_direction = null
+shader_param/scroll_speed = null
+shader_param/player = Vector3( 0, 0, 0 )
+shader_param/warp = Vector2( 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 0.313726, 0.0784314, 0, 1 )
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = null
+shader_param/uv1_scale = null
+shader_param/uv1_offset = null
+shader_param/uv2_scale = null
+shader_param/uv2_offset = null
+shader_param/scroll_direction = null
+shader_param/scroll_speed = null
+shader_param/player = Vector3( 0, 0, 0 )
+shader_param/warp = Vector2( 0, 0 )
+
+[sub_resource type="CylinderShape" id=6]
+height = 10.0
+radius = 0.5
+
+[node name="Tree" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+
+[node name="leaves" parent="." index="0"]
+material/0 = SubResource( 4 )
+
+[node name="trunk" parent="." index="1"]
+material/0 = SubResource( 5 )
+
+[node name="Collision" type="StaticBody" parent="." index="2"]
+
+[node name="Cylinder" type="CollisionShape" parent="Collision" index="0"]
+shape = SubResource( 6 )

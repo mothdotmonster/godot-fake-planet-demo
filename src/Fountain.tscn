@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://SmallWorld.gdshader" type="Shader" id=1]
+[ext_resource path="res://brick.png" type="Texture" id=2]
+[ext_resource path="res://water.png" type="Texture" id=3]
+[ext_resource path="res://pool.png" type="Texture" id=4]
+[ext_resource path="res://SmallWorldUnshaded.gdshader" type="Shader" id=5]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 20.0
+bottom_radius = 20.0
+radial_segments = 8
+rings = 0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 30, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/scroll_direction = null
+shader_param/scroll_speed = null
+shader_param/player = null
+shader_param/warp = null
+shader_param/texture_albedo = ExtResource( 2 )
+
+[sub_resource type="CylinderMesh" id=5]
+top_radius = 19.5
+bottom_radius = 0.0
+radial_segments = 8
+rings = 0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 2, 2, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/scroll_direction = null
+shader_param/scroll_speed = null
+shader_param/player = null
+shader_param/warp = null
+shader_param/texture_albedo = ExtResource( 4 )
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.0
+bottom_radius = 2.0
+height = 20.0
+radial_segments = 8
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 5 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 4, 8, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/scroll_direction = Vector2( 0, -1 )
+shader_param/scroll_speed = 1.5
+shader_param/player = null
+shader_param/warp = null
+shader_param/texture_albedo = ExtResource( 3 )
+
+[sub_resource type="CylinderShape" id=7]
+height = 10.0
+radius = 20.0
+
+[node name="Fountain" type="Spatial"]
+
+[node name="Base" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Pool" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="WaterSpike" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.48345, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WaterSpike2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.48345, 6 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WaterSpike3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.48345, -6 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WaterSpike4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.48345, 6 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="WaterSpike5" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.48345, -6 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Collision" type="StaticBody" parent="."]
+
+[node name="Cylinder" type="CollisionShape" parent="Collision"]
+shape = SubResource( 7 )
